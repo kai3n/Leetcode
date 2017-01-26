@@ -32,3 +32,19 @@ class Solution(object):
                     l = mid+1
                 else:
                     r = mid-1
+
+class Solution(object):
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        beg = 0
+        end = len(numbers)-1
+        while numbers[beg] + numbers[end] != target:
+            if numbers[beg] + numbers[end] > target:
+                end -= 1
+            else:
+                beg += 1
+        return [beg+1, end+1]
