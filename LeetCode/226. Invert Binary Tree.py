@@ -45,5 +45,3 @@ class Solution(object):
                 node.left, node.right = node.right, node.left
                 stack.extend([node.right, node.left])
         return root
-
-    
