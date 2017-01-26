@@ -13,6 +13,7 @@ class Solution(object):
         """
         if not root:
             return
+
         root.left, root.right = root.right, root.left
         self.invertTree(root.left)
         self.invertTree(root.right)
@@ -44,3 +45,5 @@ class Solution(object):
                 node.left, node.right = node.right, node.left
                 stack.extend([node.right, node.left])
         return root
+
+    
