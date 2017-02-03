@@ -5,3 +5,4 @@ class Solution(object):
             pigs += 1
         return pigs
 
+
