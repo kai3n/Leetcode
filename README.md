@@ -1,1 +1,1 @@
-This repository is for studing PS.
+This repository is for studing Problem Solving.
