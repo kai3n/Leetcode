@@ -48,6 +48,5 @@ def reverseList(self, head):
     return prev
 """
 
-"""
-1->None
+
 
