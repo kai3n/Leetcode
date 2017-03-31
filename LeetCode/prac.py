@@ -151,43 +151,54 @@
 # step 1 sort array ordered by time
 # step 2 busiestMoment
 
-input = [[1, 100, "enter"],
-         [1, 2, "exit"],
-         [3, 1000, "exit"],
-         [4, 4, "enter"]]  #
+# input = [[1, 100, "enter"],
+#          [1, 2, "exit"],
+#          [3, 1000, "exit"],
+#          [4, 4, "enter"]]  #
+#
+#
+# def busiestTime(dataArray):
+#     busiestTime = 0
+#     sum = 0
+#     dataArray = sorted(dataArray, key=dataArray[1])
+#
+#     for i in range(len(dataArray)):
+#
+#         if dataArray[2] == "enter":
+#             sum += dataArray[i][1]
+#         else:
+#             sum -= dataArray[i][1]
+#
+#         if i + 1 < len(dataArray) and dataArray[i + 1][0] == dataArray[i][0]:
+#             continue
+#
+#         if sum > busiestTime:
+#             end = busiestTime
+#
+#     return busiestTime
+#
+#
+# class a():
+#     def b(self):
+#         self.c = []
+#         def d():
+#             for i in range(10):
+#                 self.c.append(i)
+#         d()
+#         return self.c
+#
+# test = a()
+# print(test.b())
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
 
 
-def busiestTime(dataArray):
-    busiestTime = 0
-    sum = 0
-    dataArray = sorted(dataArray, key=dataArray[1])
-
-    for i in range(len(dataArray)):
-
-        if dataArray[2] == "enter":
-            sum += dataArray[i][1]
-        else:
-            sum -= dataArray[i][1]
-
-        if i + 1 < len(dataArray) and dataArray[i + 1][0] == dataArray[i][0]:
-            continue
-
-        if sum > busiestTime:
-            end = busiestTime
-
-    return busiestTime
-
-
-class a():
-    def b(self):
-        self.c = []
-        def d():
-            for i in range(10):
-                self.c.append(i)
-        d()
-        return self.c
-
-test = a()
-print(test.b())
-
-
+print(quicksort([3, 6, 8, 10, 1, 2, 1]))
+# Prints "[1, 1, 2, 3, 6, 8, 10]”
