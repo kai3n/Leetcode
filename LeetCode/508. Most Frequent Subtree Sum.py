@@ -24,3 +24,4 @@ class Solution(object):
         getSum(root)
         frequent = max(c.values())
         return [s for s in c.keys() if c[s] == frequent]
+
