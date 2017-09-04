@@ -1,4 +1,4 @@
-# time limit
+# Kadane's Algorithm
 class Solution(object):
     def maxProfit(self, prices):
         """
@@ -6,19 +6,16 @@ class Solution(object):
         :rtype: int
         """
 
-        if len(prices) >= 2:
-            max = 0
-            for i in range(len(prices)):
-                for j in range(i, len(prices)):
-                    if prices[j] - prices[i] > max:
-                        max = prices[j] - prices[i]
-            return max
-        else:
-            return 0
+        maxCur = 0
+        maxSoFar = 0
+        for i in range(1, len(prices)):
+            maxCur += prices[i] - prices[i - 1]
+            maxCur = max(0, maxCur)
+            maxSoFar = max(maxCur, maxSoFar)
+        return maxSoFar
 
 
 
-
-testcase = [7, 1, 5, 3, 6, 4]
+testcase = [7, 1, 5, 1, 2, 6, 4]
 test = Solution()
 print(test.maxProfit(testcase))  # must be 5.

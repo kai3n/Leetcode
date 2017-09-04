@@ -17,4 +17,3 @@ class Solution(object):
 
 test = Solution()
 print(test.findLongestWord("abpcplea", ["ale","apple","monkey","plea"]))
-
