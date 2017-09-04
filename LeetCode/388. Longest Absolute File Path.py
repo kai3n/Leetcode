@@ -3,10 +3,9 @@ class Solution(object):
     def lengthLongestPath(self, input):
         maxlen = 0
         pathlen = {0: 0}
-        print(input.splitlines())
         for line in input.splitlines():
             name = line.lstrip('\t')
-
+            print(name)
             depth = len(line) - len(name)
             if '.' in name:
                 maxlen = max(maxlen, pathlen[depth] + len(name))
