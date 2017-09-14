@@ -9,3 +9,7 @@ class Solution(object):
             if (nums[i]!=0):
                 nums[i],nums[last0] = nums[last0],nums[i]
                 last0+=1
+        return nums
+
+test = Solution()
+print(test.moveZeroes([9, 5, 0, 1, 0, 3, 12]))

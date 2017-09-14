@@ -10,5 +10,5 @@ class Solution(object):
         return arr[0]
 
 test = Solution()
-print(test.findContestMatch(16))
+print(test.findContestMatch(1024))
 
