@@ -1,13 +1,7 @@
-class Solution(object):
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
-
-nodeDic = {'a':1,'b':2,'c':3, 'd':1}
-print(max(nodeDic.items(), key=lambda x:x[1])[1])
-# print(a.items())
-# print(a.keys())
-# [1,2,3,4,5,6,7,8,9,0]
-print([i[0] for i in nodeDic.items() if i[1] == 1])
+def generateParenthesis(self, n):
+    def generate(p, left, right, parens=[]):
+        if left:         generate(p + '(', left-1, right)
+        if right > left: generate(p + ')', left, right-1)
+        if not right:    parens += p,
+        return parens
+    return generate('', n, n)
