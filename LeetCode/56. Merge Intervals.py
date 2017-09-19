@@ -32,6 +32,15 @@ class Solution(object):
             i += 1
         return res
 
+    def merge(self, intervals):
+        out = []
+        for i in sorted(intervals, key=lambda i: i.start):
+            if out and i.start <= out[-1].end:
+                out[-1].end = max(out[-1].end, i.end)
+            else:
+                out += i,
+        return out
+
 a = [Interval(1,3),Interval(2,6),Interval(8,10),Interval(15,18)]
 a = [Interval(1,4),Interval(2,3)]
 a = [Interval(1,4),Interval(4,5)]
