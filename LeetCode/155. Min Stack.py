@@ -19,7 +19,7 @@ class MinStack(object):
         :rtype: void
         """
         t = self.stack.pop()
-        self.minNum = min(self.stack) if len(self.stack) > 0 else float('inf')
+        self.minNum = min(self.stack) if len(self.stack) > 1 else float('inf')
         return t
 
     def top(self):

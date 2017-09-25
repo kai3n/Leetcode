@@ -7,7 +7,7 @@ class Solution(object):
             return
         if len(nums) == 1:
             return nums[0]
-        
+
         while first <= last:
             mid = (first + last) // 2
             if nums[mid] < nums[mid - 1]:

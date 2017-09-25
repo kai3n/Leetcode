@@ -396,130 +396,142 @@ expectation_answer : [[0, 0, 0, 0, 0],
 
 
 
-import copy
-
-row_len = 5
-col_len = 5
-n = 5
-initial_map = [[0 for x in range(row_len)] for y in range(col_len)]  # initialize
-initial_map[1][3] = 2  # Wall
-initial_map[1][4] = 2  # Wall
-initial_map[0][3] = 2  # Wall
-
-
-def checkValidity(board, y, x):
-
-    # UP check
-    for i in range(y, -1, -1):
-        if board[i][x] == 1:
-            return False
-        if board[i][x] == 2:
-            break
-
-    # DOWN check
-    for i in range(y, len(board)):
-        if board[i][x] == 1:
-            return False
-        if board[i][x] == 2:
-            break
-
-    # LEFT check
-    for i in range(x, -1, -1):
-        if board[y][i] == 1:
-            return False
-        if board[y][i] == 2:
-            break
-
-    # RIGHT check
-    for i in range(x, len(board)):
-        if board[y][i] == 1:
-            return False
-        if board[y][i] == 2:
-            break
-
-    # LEFT-UP check
-    for i in range(min(y, x), -1, -1):
-        if board[y - i][x - i] == 1:
-            return False
-        if board[y - i][x - i] == 2:
-            break
-
-    # RIGHT-DOWN check
-    for i in range(min(len(board)-1-y, len(board[0])-1-x)+1):
-        if board[y + i][x + i] == 1:
-            return False
-        if board[y + i][x + i] == 2:
-            break
-
-    # LEFT-DOWN check
-    for i in range(min(len(board) - 1 - y, x)+1):
-        if board[y + i][x - i] == 1:
-            return False
-        if board[y + i][x - i] == 2:
-            break
-
-    # RIGHT-UP check
-    for i in range(min(y, len(board[0]) - 1 - x)+1):
-        if board[y - i][x + i] == 1:
-            return False
-        if board[y - i][x + i] == 2:
-            break
-
-    return True
-
-def dfs(board, depth, broad, lizard_num):
-
-    stack = []
-    root = [board, depth, broad, lizard_num]
-    stack.append(root)
-
-    while stack:
-        b, d, w, l = stack.pop()
-        if l == n:
-            return b
-
-        if d < len(b):
-            # up -> down direction
-            for child in range(len(b[0])):
-                t = copy.deepcopy(b)
-                if t[d][child] == 0 and checkValidity(t, d, child):
-                    t[d][child] = 1  # put a lizard
-                    stack.append([t, d + 1, w, l + 1])
-
-            # down -> up direction
-            for child in range(len(b[0])):
-                t = copy.deepcopy(b)
-                if t[d][len(b)-1-child] == 0 and checkValidity(t, d, len(b)-1-child):
-                    t[d][len(b)-1-child] = 1  # put a lizard
-                    stack.append([t, d + 1, w, l + 1])
-
-        if w < len(b[0]):
-            # left -> right direction
-            for child in range(len(b)):
-                t = copy.deepcopy(b)
-                if t[child][w] == 0 and checkValidity(t, child, w):
-                    t[child][w] = 1  # put a lizard
-                    stack.append([t, d, w + 1, l + 1])
-
-            # right -> left direction
-            for child in range(len(b)):
-                t = copy.deepcopy(b)
-                if t[len(b[0])-1-child][w] == 0 and checkValidity(t, len(b[0])-1-child, w):
-                    t[len(b[0])-1-child][w] = 1  # put a lizard
-                    stack.append([t, d, w + 1, l + 1])
-
-board = dfs(initial_map, 0, 0, 0)
-if board:
-    for i in range(len(board)):
-        for j in range(len(board[0])):
-            print("{} ".format(board[i][j]), end='')
-        print()
-else:
-    print("Sorry, I can't solve it.")
-
-
+# import copy
+#
+# row_len = 5
+# col_len = 5
+# n = 5
+# initial_map = [[0 for x in range(row_len)] for y in range(col_len)]  # initialize
+# initial_map[1][3] = 2  # Wall
+# initial_map[1][4] = 2  # Wall
+# initial_map[0][3] = 2  # Wall
+#
+#
+# def checkValidity(board, y, x):
+#
+#     # UP check
+#     for i in range(y, -1, -1):
+#         if board[i][x] == 1:
+#             return False
+#         if board[i][x] == 2:
+#             break
+#
+#     # DOWN check
+#     for i in range(y, len(board)):
+#         if board[i][x] == 1:
+#             return False
+#         if board[i][x] == 2:
+#             break
+#
+#     # LEFT check
+#     for i in range(x, -1, -1):
+#         if board[y][i] == 1:
+#             return False
+#         if board[y][i] == 2:
+#             break
+#
+#     # RIGHT check
+#     for i in range(x, len(board)):
+#         if board[y][i] == 1:
+#             return False
+#         if board[y][i] == 2:
+#             break
+#
+#     # LEFT-UP check
+#     for i in range(min(y, x), -1, -1):
+#         if board[y - i][x - i] == 1:
+#             return False
+#         if board[y - i][x - i] == 2:
+#             break
+#
+#     # RIGHT-DOWN check
+#     for i in range(min(len(board)-1-y, len(board[0])-1-x)+1):
+#         if board[y + i][x + i] == 1:
+#             return False
+#         if board[y + i][x + i] == 2:
+#             break
+#
+#     # LEFT-DOWN check
+#     for i in range(min(len(board) - 1 - y, x)+1):
+#         if board[y + i][x - i] == 1:
+#             return False
+#         if board[y + i][x - i] == 2:
+#             break
+#
+#     # RIGHT-UP check
+#     for i in range(min(y, len(board[0]) - 1 - x)+1):
+#         if board[y - i][x + i] == 1:
+#             return False
+#         if board[y - i][x + i] == 2:
+#             break
+#
+#     return True
+#
+# def dfs(board, depth, broad, lizard_num):
+#
+#     stack = []
+#     root = [board, depth, broad, lizard_num]
+#     stack.append(root)
+#
+#     while stack:
+#         b, d, w, l = stack.pop()
+#         if l == n:
+#             return b
+#
+#         if d < len(b):
+#             # up -> down direction
+#             for child in range(len(b[0])):
+#                 t = copy.deepcopy(b)
+#                 if t[d][child] == 0 and checkValidity(t, d, child):
+#                     t[d][child] = 1  # put a lizard
+#                     stack.append([t, d + 1, w, l + 1])
+#
+#             # down -> up direction
+#             for child in range(len(b[0])):
+#                 t = copy.deepcopy(b)
+#                 if t[d][len(b)-1-child] == 0 and checkValidity(t, d, len(b)-1-child):
+#                     t[d][len(b)-1-child] = 1  # put a lizard
+#                     stack.append([t, d + 1, w, l + 1])
+#
+#         if w < len(b[0]):
+#             # left -> right direction
+#             for child in range(len(b)):
+#                 t = copy.deepcopy(b)
+#                 if t[child][w] == 0 and checkValidity(t, child, w):
+#                     t[child][w] = 1  # put a lizard
+#                     stack.append([t, d, w + 1, l + 1])
+#
+#             # right -> left direction
+#             for child in range(len(b)):
+#                 t = copy.deepcopy(b)
+#                 if t[len(b[0])-1-child][w] == 0 and checkValidity(t, len(b[0])-1-child, w):
+#                     t[len(b[0])-1-child][w] = 1  # put a lizard
+#                     stack.append([t, d, w + 1, l + 1])
+#
+# board = dfs(initial_map, 0, 0, 0)
+# if board:
+#     for i in range(len(board)):
+#         for j in range(len(board[0])):
+#             print("{} ".format(board[i][j]), end='')
+#         print()
+# else:
+#     print("Sorry, I can't solve it.")
 
 
+# def dropEggs(n):
+#     for i in range(round(n**1/2)):
+#         if i*(i+1)//2 >= n:
+#             return i
+
+#print(dropEggs(10))
+
+
+# s = set([1, 2, 3, 5, 6, 7])
+# ss = set([3,6,7,8,20])
+# print(s.intersection(ss))
+
+l = list()
+l.remove()
 
 
 
