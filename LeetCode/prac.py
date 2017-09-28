@@ -203,7 +203,7 @@
 # #
 # #
 # # print(quick_sort([3, 6, 8, 10, 1, 2, 1]))
-# # # Prints "[1, 1, 2, 3, 6, 8, 10]”
+
 #
 #
 # # Let's assume that we have 10 customers
@@ -242,7 +242,7 @@
 #             if i == 0:
 #                 opt[i][d1][d2] = 0
 #             elif d1 < customers[i].d and d2 < customers[i].d:
-#                 '''initial condition2: OPT(d1,d2,i) = -∞ if d1 < d[i] or d2 < d[i]
+#                 '''initial condition2: OPT(d1,d2,i) = if d1 < d[i] or d2 < d[i]
 #                     Since there is some problems with your initial condition2, I modified "or" to "and"
 #                     and then added other cases that "if d1 > d[i] and d2 < d[i]" and "if d1 < d[i] and d2 > d[i]"
 #                     Otherwise, your recurrence is not going to work properly'''
@@ -530,16 +530,38 @@ expectation_answer : [[0, 0, 0, 0, 0],
 # ss = set([3,6,7,8,20])
 # print(s.intersection(ss))
 
-l = list()
-l.remove()
+# l = list()
+# l.remove()
 
 
 
 
 
+def string_transformation(length, string):
+    str_list = list(map(str, string))
+    d = dict()
+    for i in range(length):
+        if d.get(str_list[i], -1) == -1:
+            d[str_list[i]] = 0
+        else:
+            d[str_list[i]] += 1
+            a = ord(str_list[i]) + d[str_list[i]]
+            if a > 122:
+                while a > 122:
+                    a -= 26
+                str_list[i] = str(unichr(a))
+            else:
+                str_list[i] = str(unichr(ord(str_list[i]) + d[str_list[i]]))
+    return ''.join(str_list)
 
 
+n = int(input())
 
+while n > 0:
+    l = int(raw_input())
+    s = raw_input()
+    print(string_transformation(l, s))
+    n -= 1
 
 
 
