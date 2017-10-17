@@ -20,13 +20,13 @@ class Solution(object):
 
 
 
-a = "code"  # False
-b = "aab"  # True
-c = "carerac" # True
-
-test = Solution()
-print(test.canPermutePalindrome(a))
-print(test.canPermutePalindrome(b))
-print(test.canPermutePalindrome(c))
+# a = "code"  # False
+# b = "aab"  # True
+# c = "carerac" # True
+#
+# test = Solution()
+# print(test.canPermutePalindrome(a))
+# print(test.canPermutePalindrome(b))
+# print(test.canPermutePalindrome(c))
 
 

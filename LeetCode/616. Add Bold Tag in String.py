@@ -21,7 +21,7 @@ class Solution(object):
 # "<b>abc</b>xyz<b>123</b>"
 
 s = "abcxyz123"
-dict = ["abc","123"]
+dict = ["abc", "123"]
 
 # "<b>aaabbc</b>c"
 # s = "aaabbcc"

@@ -394,8 +394,6 @@ expectation_answer : [[0, 0, 0, 0, 0],
                       [0, 0, 1, 0, 0],]
 """
 
-
-
 # import copy
 #
 # row_len = 5
@@ -523,7 +521,7 @@ expectation_answer : [[0, 0, 0, 0, 0],
 #         if i*(i+1)//2 >= n:
 #             return i
 
-#print(dropEggs(10))
+# print(dropEggs(10))
 
 
 # s = set([1, 2, 3, 5, 6, 7])
@@ -537,48 +535,419 @@ expectation_answer : [[0, 0, 0, 0, 0],
 
 
 
-def string_transformation(length, string):
-    str_list = list(map(str, string))
-    d = dict()
-    for i in range(length):
-        if d.get(str_list[i], -1) == -1:
-            d[str_list[i]] = 0
-        else:
-            d[str_list[i]] += 1
-            a = ord(str_list[i]) + d[str_list[i]]
-            if a > 122:
-                while a > 122:
-                    a -= 26
-                str_list[i] = str(unichr(a))
-            else:
-                str_list[i] = str(unichr(ord(str_list[i]) + d[str_list[i]]))
-    return ''.join(str_list)
+# def string_transformation(length, string):
+#     str_list = list(map(str, string))
+#     d = dict()
+#     for i in range(length):
+#         if d.get(str_list[i], -1) == -1:
+#             d[str_list[i]] = 0
+#         else:
+#             d[str_list[i]] += 1
+#             a = ord(str_list[i]) + d[str_list[i]]
+#             if a > 122:
+#                 while a > 122:
+#                     a -= 26
+#                 str_list[i] = str(unichr(a))
+#             else:
+#                 str_list[i] = str(unichr(ord(str_list[i]) + d[str_list[i]]))
+#     return ''.join(str_list)
+#
+#
+# n = int(input())
+#
+# while n > 0:
+#     l = int(raw_input())
+#     s = raw_input()
+#     print(string_transformation(l, s))
+#     n -= 1
 
 
-n = int(input())
-
-while n > 0:
-    l = int(raw_input())
-    s = raw_input()
-    print(string_transformation(l, s))
-    n -= 1
+# IBM question 1
+import sys
+import re
 
 
+# for line in sys.stdin:
+#     re.match(r'sample', line)
+#     print(line, end="")
+
+# l = ['ACETAMINOPHEN',
+#      'ASPRIN',
+#      'ASPERGEL',
+#      'ASPERTAME',
+#      'ATAVAN',
+#      'BUPROPION']
+#
+# target = 'AT'
+# # ''.join([chr(ord(s)+i) for s in target])
+#
+# for line in l:
+#     for i in range(25):
+#         m = max(list(map(str, target)))
+#         if ord(m)+i > 90:
+#             break
+#         new_target = ''.join([chr(ord(s)+i) for s in target])
+#         if re.match('^{}'.format(new_target), line) != None:
+#             f = True
+#             print(line)
+# if not f:
+#     print('<NONE>')
+
+# IBM question 2
+
+# l = [['2016-04-01',4,'pies'],
+#     ['2016-04-01',6,'pies'],
+#     ['2016-04-01',2,'cakes'],
+#     ['2016-04-01',12,'cookies'],
+#     ['2016-04-02',7,'pumpkins'],
+#     ['2016-04-02',2,'peaches'],
+#     ['2016-04-03',6,'apples'],
+#     ['2016-04-03',23,'pies'],
+#     ['2016-04-03',4,'cookies'],
+#     ['2016-04-03',9,'peaches']]
+#
+#
+# from collections import defaultdict
+# d = defaultdict(lambda: defaultdict(int))
+# for line in l:
+#
+#     d[line[0]][line[2]] += line[1]
+# res = []
+# for k, v in d.items():
+#     res.append([k, v])
+# res.sort()
+# for i in res:
+#     d_sum = sum(i[1].values())
+#     d_len = len(i[1])
+#     d_avg = float(d_sum) / d_len
+#     print('{},{},{:0.2f},{}'.format(i[0], str(d_sum), d_avg, str(d_len)))
+#
 
 
+# def binarySearch(arr, x):
+#     first = 0
+#     last = len(arr)-1
+#
+#     while first <= last:
+#         mid = (first + last) // 2
+#         if x < arr[mid]:
+#             last = mid - 1
+#         elif x > arr[mid]:
+#             first = mid + 1
+#         else:
+#             return mid
+#     return first
+#
+# n = 3
+# i = 0
+# d = {}
+# while i < n:
+#     line = input()
+#     line = line.split()
+#     l, e = int(line[0]), int(line[1])
+#     d[(l, i)] = e
+#     i += 1
+#
+# ll = sorted(list(d), reverse=True)
+# arr = [None] * n
+# count = 0
+# res = [0] * n
+# for i in ll:
+#     target = d[i]
+#     index = binarySearch(arr, target)
+#     print(index)
+#     print(arr)
+#     res[i[1]] = len(arr)-index
+#     arr[index] = d[i]
+#
+# print(res)
+#
+#
+# a = []
+# a.insert(1)
+
+# print(1)
+#
+# line = [15,2,3]
+#
+# n = int(line[0])
+# num1 = int(line[1])
+# num2 = int(line[2])
+# res = []
+#
+# for i in range(n, 0, -1):
+#     if (i % num1 == 0 or i % num2 == 0) and ((str(i) in str(num1)) or (str(i) in str(num2))):
+#         res.append('OUTTHINK')
+#     elif i % num1 == 0 or i % num2 == 0:
+#         res.append('OUT')
+#     elif (str(i) in str(num1)) or (str(i) in str(num2)):
+#         res.append('THINK')
+#     else:
+#         res.append(str(i))
+# res = ','.join(res)
+#
+# print(res)
 
 
+# for line in [1,3,4,7,9,10]:
+#
+#     # first solution
+#     # print(int(line)**2, end="")
+#
+#     # second solution - pow()
+#     # third solution - int(line)*int(line)
+#
+#     # fourth solution
+#     odd = 1
+#     sq = 0
+#
+#     num = int(line)
+#
+#     while num != 0:
+#         sq += odd
+#         odd += 2
+#         num -= 1
+#     print(sq)
+
+# source = ["var a = 2;",
+#           "/*",
+#           "var b = 2;",
+#           "if (a === b) {",
+#           "  b = a + 1;",
+#           "  //b = a * 2 - 1;",
+#           "}",
+#           "*/",
+#           "var b = 3;",
+#           "return a * b;"]
+# #
+# # source = ["int a = 2;",
+# #           "int b = 47;/*37;*///41;",
+# #           "int c = 3/*4//5*/;",
+# #           "return a / b * c/*a /* b / c*/;"]
+# #
+# source = ["//1//1",  "/*2*/",   "x = 2//*/"]
+#
+# # source =  ["a///*fdgd*/b",
+# #              "cd",
+# #              "ef"]
+#
+# new_source = []
+# for i in source:
+#     if '//' in i:
+#         if i[-1] != ';':
+#             new_source.append(i+';')
+#         else:
+#             new_source.append(i)
+#     else:
+#         new_source.append(i)
+#
+# source = new_source
+#
+# source = '^' + ' '.join(source)
+# source = source.replace('/*', ' /* ')
+# source = source.replace('*/', ' */ ')
+# source = source.replace('//', ' // ')
+# count = 0
+#
+# isLineComment = False
+# isBlockComment = False
+#
+# for i in range(1, len(source)):
+#     if not isLineComment and not isBlockComment and source[i - 1] == '/' and source[i] == '*':
+#         isBlockComment = True
+#         count -= 1
+#     elif source[i - 1] == '/' and source[i] == '*':
+#         isBlockComment = True
+#
+#     if not isLineComment and not isBlockComment and source[i - 1] == '*' and source[i] == '/':
+#         isBlockComment = False
+#         count -= 1
+#     elif source[i - 1] == '*' and source[i] == '/':
+#         isBlockComment = False
+#         count -= 1
+#
+#     if not isLineComment and not isBlockComment and source[i - 1] == '/' and source[i] == '/':
+#         isLineComment = True
+#         count -= 1
+#     elif source[i - 1] == '/' and source[i] == '/':
+#         isLineComment = True
+#
+#     if not isLineComment and not isBlockComment and isLineComment and source[i] == ';':
+#         isLineComment = False
+#         count -= 1
+#     elif isLineComment and source[i] == ';':
+#         isLineComment = False
+#
+#     if not isLineComment and not isBlockComment:
+#         if source[i] != ' ':
+#             count += 1
+#
+# print(source)
+# print(count)
+
+# pramp
+# def decrypt(word):
+#     if not word:
+#         return ""
+#     word = list(map(str, word))
+#     # Step 1
+#     for i in range(len(word)):
+#         word[i] = ord(word[i])
+#
+#     # Step 2
+#     for i in range(1, len(word)):
+#         a = 97
+#         z = 122
+#         while word[i] > word[i - 1] + z:
+#             a += 26
+#             z += 26
+#         while word[i] < word[i - 1] + a:
+#             word[i] += 26
+#     # Step 3
+#     for i in range(len(word) - 1, 0, -1):
+#         word[i] -= word[i - 1]
+#     word[0] -= 1
+#
+#     res = ''
+#     for i in word:
+#         res += chr(i)
+#     return res
 
 
+# word = 'dnotq'
+# print(decrypt(word))
+
+# PocketGems
+# def deleteAndEarn(arr):
+#
+#     arr = list(set(arr))  # remove duplicate
+#     arr.sort()  # sort
+#
+#     maxPoint = arr[-1]
+#     inserted = arr[-1]
+#
+#     # add the point from the last element
+#     for i in range(len(arr)-2, -1, -1):
+#         if arr[i] + 1 != inserted:
+#             maxPoint += arr[i]
+#             inserted = arr[i]
+#     return maxPoint
+#
+# arr = [3, 4, 2]
+# arr2 = [1, 2, 3, 4]
+# print(deleteAndEarn(arr))  # should return 6
+# print(deleteAndEarn(arr2))  # should return 6
 
 
+# Tree serialize and desirialize
+"""
+      1
+     / \
+    3   4
+   / \   \
+  2   6   5
+
+"""
+
+# class TreeNode(object):
+#     def __init__(self, val):
+#         self.val = val
+#         self.left = None
+#         self.right = None
+#
+# class Codec(object):
+#     def __init__(self, root):
+#         self.depth = 0
+#         self.findDepth(root, self.depth)
+#         self.arr = [0] * 2**self.depth
+#
+#     def findDepth(self, root, d):
+#         if self.depth < d:
+#             self.depth = d
+#         if root:
+#             self.findDepth(root.left, d+1)
+#             self.findDepth(root.right, d+1)
+#
+#     def serialize(self, root, index):
+#         if root:
+#             self.arr[index] = root.val
+#             if root.left:
+#                 self.arr[index * 2] = root.left.val
+#                 self.serialize(root.left, index * 2)
+#             if root.right:
+#                 self.arr[index * 2 + 1] = root.right.val
+#                 self.serialize(root.right, index * 2 + 1)
+#         return self.arr
+#
+#     def deserialize(self, arr, index):
+#         root = TreeNode(None)
+#         if index < len(arr) and arr[index] != 0:
+#             root.val = arr[index]
+#             if index * 2 < len(arr) and arr[index * 2] != 0:
+#                 root.left = self.deserialize(arr, index * 2)
+#             if index * 2 + 1 < len(arr) and arr[index * 2 + 1] != 0:
+#                 root.right = self.deserialize(arr, index * 2 + 1)
+#         return root
+#
+#
+# root = TreeNode(1)
+# root.left = TreeNode(3)
+# root.right = TreeNode(4)
+# root.left.left = TreeNode(2)
+# root.left.right = TreeNode(6)
+# root.right.right = TreeNode(5)
+#
+# codec = Codec(root)
+# print(codec.serialize(root, 1))
+# new_root = codec.deserialize(codec.serialize(root, 1), 1)
+#
+# def inorder(root):
+#     if root:
+#         inorder(root.left)
+#         print(root.val, end='')
+#         inorder(root.right)
+# inorder(new_root)
 
 
-
-
-
-
-
+# IBM
+# import re
+# import sys
+#
+# # fr = open('drugList2.txt', 'r')
+# # l = fr.read()
+#
+# input_list = []
+# medicines = []
+# target = ''
+# flag = False
+# count = 0
+# for l in sys.stdin:
+#     if not l[0].isalpha():  # I bump into blank line
+#         flag = True
+#         continue
+#     if flag:
+#         target = l.rstrip('\n')
+#         break
+#     input_list.append(l.rstrip('\n'))
+#
+# medicines = input_list
+#
+# for line in medicines:
+#
+#     for i in range(25):
+#         m = max(list(map(str, target)))
+#         if ord(m)+i > 90:
+#             break
+#         new_target = ''.join([chr(ord(s)+i) for s in target])
+#
+#         if line[:len(new_target)] == new_target:
+#             count += 1
+#             if count < 3:
+#                 print(line)
+#             else:
+#                 break
+# if count == 0:
+#     print("<None>")
 
 
 
