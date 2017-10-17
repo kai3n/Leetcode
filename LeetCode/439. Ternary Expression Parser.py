@@ -34,6 +34,28 @@ class Solution(object):
             else:
                 return expression[i:]
 
+class Solution(object):
+    def parseTernary(self, expression):
+        if not expression or len(expression) == 0:
+            return ""
+
+        stack = []
+
+        for i in range(len(expression)-1, -1, -1):
+            c = expression[i]
+            if len(stack) != 0 and stack[-1] == "?":
+                stack.pop()  # "?"
+                first = stack.pop()
+                stack.pop()  # ":"
+                second = stack.pop()
+                if c == 'T':
+                    stack.append(first)
+                else:
+                    stack.push(second)
+            else:
+                stack.append(c)
+        return stack[-1]
+
 a = "T?2:3"
 b = "F?1:T?4:5"
 c = "T?T?F:5:3"
