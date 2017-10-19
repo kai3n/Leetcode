@@ -1,4 +1,4 @@
-def dfs(board, visited_list, node):
+def dfs2(board, visited_list, node):
     stack = [node]
     visited_list[node] = 1
     while stack:
@@ -7,6 +7,13 @@ def dfs(board, visited_list, node):
             if i != n and board[n][i] == 1 and visited_list[i] == 0:
                 visited_list[i] = 1
                 stack.append(i)
+
+def dfs(board, visited_list, node):
+    if visited_list[node] == 0:
+        visited_list[node] = 1
+        for i in range(len(board[node])):
+            if i != node and board[node][i] == 1 and visited_list[i] == 0:
+                dfs(board, visited_list, i)
 
 class Solution(object):
     def findCircleNum(self, M):
@@ -30,7 +37,6 @@ class Solution(object):
 M = [[1,1,0],
      [1,1,0],
      [0,0,1]]
-
 
 
 test = Solution()
