@@ -16,3 +16,11 @@ import math
 
 def numTrees(self, n):
     return math.factorial(2*n)/(math.factorial(n)*math.factorial(n+1))
+
+
+
+test = Solution()
+print(test.numTrees(3))
+
+
+

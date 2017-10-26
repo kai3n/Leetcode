@@ -818,25 +818,69 @@ import re
 # print(decrypt(word))
 
 # PocketGems
-# def deleteAndEarn(arr):
-#
-#     arr = list(set(arr))  # remove duplicate
-#     arr.sort()  # sort
-#
-#     maxPoint = arr[-1]
-#     inserted = arr[-1]
-#
-#     # add the point from the last element
-#     for i in range(len(arr)-2, -1, -1):
-#         if arr[i] + 1 != inserted:
-#             maxPoint += arr[i]
-#             inserted = arr[i]
-#     return maxPoint
-#
+def deleteAndEarn2(arr):
+
+    arr = list(set(arr))  # remove duplicate
+    arr.sort()  # sort
+
+    maxPoint = arr[-1]
+    inserted = arr[-1]
+
+    # add the point from the last element
+    for i in range(len(arr)-2, -1, -1):
+        if arr[i] + 1 != inserted:
+            maxPoint += arr[i]
+            inserted = arr[i]
+    return maxPoint
+
+def deleteAndEarn(arr):
+
+    from collections import defaultdict
+
+    d = defaultdict(int)
+
+    for i in arr:
+        d[i] += i
+
+    l = []
+    for k, v in d.items():
+        l.append([k,v])
+    l.sort(key=lambda x:x[0])
+
+    print(l)
+
+    maxPoint = 0
+    for i in range(len(l)-1, 0, -1):
+        if l[i-1][0] +1 < l[i][0]:
+            maxPoint += l[i][1]
+        else:
+            if l[i-2][0] + 1 < l[i-1][0]:
+                maxPoint += l[i-1][1]
+            else:
+                if l[i-2][1] + l[i][1] < l[i-1][1]:
+                    maxPoint += l[i-2][1] + l[i][1]
+                else:
+                    maxPoint += l[i-1][1]
+
+
+    # arr = list(set(arr))  # remove duplicate
+    # arr.sort()  # sort
+    #
+    # maxPoint = arr[-1]
+    # inserted = arr[-1]
+    #
+    # # add the point from the last element
+
+    # for i in range(len(arr)-2, -1, -1):
+    #     if arr[i] + 1 != inserted:
+    #         maxPoint += arr[i]
+    #         inserted = arr[i]
+    # return maxPoint
+
 # arr = [3, 4, 2]
-# arr2 = [1, 2, 3, 4]
+arr2 = [1, 2, 3, 3, 2, 2, 2, 2, 1]
 # print(deleteAndEarn(arr))  # should return 6
-# print(deleteAndEarn(arr2))  # should return 6
+print(deleteAndEarn(arr2))  # should return 6
 
 
 # Tree serialize and desirialize

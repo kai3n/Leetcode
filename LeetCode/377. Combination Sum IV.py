@@ -12,3 +12,6 @@ class Solution(object):
                 if i >= x:
                     res[i] += res[i-x]
         return res[target]
+
+test = Solution()
+test.combinationSum4([1,2,3],4)
