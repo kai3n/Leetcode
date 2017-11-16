@@ -24,3 +24,17 @@ class Solution(object):
             if left_dp[i] == right_dp[i]:
                 return i
         return -1
+
+"""
+class Solution(object):
+    def pivotIndex(self, nums):
+        # Time: O(n)
+        # Space: O(1)
+        left, right = 0, sum(nums)
+        for index, num in enumerate(nums):
+            right -= num
+            if left == right:
+                return index
+            left += num
+        return -1
+"""
