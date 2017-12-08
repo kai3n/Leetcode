@@ -29,13 +29,7 @@ class Solution:
                 g[n] = n
                 dfs(n, n)
 
-        print(g)
         for i, j in zip(words1, words2):
-            if i == j:
-                continue
-            else:
-                if g.get(i, None) != g.get(j, None):
-                    return False
-                else:
-                    continue
+            if g.get(i, i) != g.get(j, j):
+                return False
         return True
