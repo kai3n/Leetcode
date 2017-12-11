@@ -566,7 +566,6 @@ expectation_answer : [[0, 0, 0, 0, 0],
 import sys
 import re
 
-
 # for line in sys.stdin:
 #     re.match(r'sample', line)
 #     print(line, end="")
@@ -818,80 +817,80 @@ import re
 # print(decrypt(word))
 
 # PocketGems
-def deleteAndEarn2(arr):
+# def deleteAndEarn2(arr):
+#
+#     arr = list(set(arr))  # remove duplicate
+#     arr.sort()  # sort
+#
+#     maxPoint = arr[-1]
+#     inserted = arr[-1]
+#
+#     # add the point from the last element
+#     for i in range(len(arr)-2, -1, -1):
+#         if arr[i] + 1 != inserted:
+#             maxPoint += arr[i]
+#             inserted = arr[i]
+#     return maxPoint
+#
+# def deleteAndEarn(arr):
+#
+#     from collections import defaultdict
+#
+#     d = defaultdict(int)
+#
+#     for i in arr:
+#         d[i] += i
+#
+#     l = []
+#     for k, v in d.items():
+#         l.append([k,v])
+#     l.sort(key=lambda x:x[0])
+#
+#     print(l)
+#
+#     maxPoint = 0
+#     for i in range(len(l)-1, 0, -1):
+#         if l[i-1][0] +1 < l[i][0]:
+#             maxPoint += l[i][1]
+#         else:
+#             if l[i-2][0] + 1 < l[i-1][0]:
+#                 maxPoint += l[i-1][1]
+#             else:
+#                 if l[i-2][1] + l[i][1] < l[i-1][1]:
+#                     maxPoint += l[i-2][1] + l[i][1]
+#                 else:
+#                     maxPoint += l[i-1][1]
 
-    arr = list(set(arr))  # remove duplicate
-    arr.sort()  # sort
 
-    maxPoint = arr[-1]
-    inserted = arr[-1]
+# arr = list(set(arr))  # remove duplicate
+# arr.sort()  # sort
+#
+# maxPoint = arr[-1]
+# inserted = arr[-1]
+#
+# # add the point from the last element
 
-    # add the point from the last element
-    for i in range(len(arr)-2, -1, -1):
-        if arr[i] + 1 != inserted:
-            maxPoint += arr[i]
-            inserted = arr[i]
-    return maxPoint
-
-def deleteAndEarn(arr):
-
-    from collections import defaultdict
-
-    d = defaultdict(int)
-
-    for i in arr:
-        d[i] += i
-
-    l = []
-    for k, v in d.items():
-        l.append([k,v])
-    l.sort(key=lambda x:x[0])
-
-    print(l)
-
-    maxPoint = 0
-    for i in range(len(l)-1, 0, -1):
-        if l[i-1][0] +1 < l[i][0]:
-            maxPoint += l[i][1]
-        else:
-            if l[i-2][0] + 1 < l[i-1][0]:
-                maxPoint += l[i-1][1]
-            else:
-                if l[i-2][1] + l[i][1] < l[i-1][1]:
-                    maxPoint += l[i-2][1] + l[i][1]
-                else:
-                    maxPoint += l[i-1][1]
-
-
-    # arr = list(set(arr))  # remove duplicate
-    # arr.sort()  # sort
-    #
-    # maxPoint = arr[-1]
-    # inserted = arr[-1]
-    #
-    # # add the point from the last element
-
-    # for i in range(len(arr)-2, -1, -1):
-    #     if arr[i] + 1 != inserted:
-    #         maxPoint += arr[i]
-    #         inserted = arr[i]
-    # return maxPoint
+# for i in range(len(arr)-2, -1, -1):
+#     if arr[i] + 1 != inserted:
+#         maxPoint += arr[i]
+#         inserted = arr[i]
+# return maxPoint
 
 # arr = [3, 4, 2]
-arr2 = [1, 2, 3, 3, 2, 2, 2, 2, 1]
-# print(deleteAndEarn(arr))  # should return 6
-print(deleteAndEarn(arr2))  # should return 6
-
-
-# Tree serialize and desirialize
-"""
-      1
-     / \
-    3   4
-   / \   \
-  2   6   5
-
-"""
+# arr2 = [1, 2, 3, 3, 2, 2, 2, 2, 1]
+# # print(deleteAndEarn(arr))  # should return 6
+# print(deleteAndEarn(arr2))  # should return 6
+#
+#
+# # Tree serialize and desirialize
+# """
+#       1
+#      / \
+#     3   4
+#    / \   \
+#   2   6   5
+#
+# """
 
 # class TreeNode(object):
 #     def __init__(self, val):
@@ -994,6 +993,68 @@ print(deleteAndEarn(arr2))  # should return 6
 #     print("<None>")
 
 
+# arr = [[8, 2, 6, 7, 1, 3],
+#        [3, 7, 6, 7, 9, 3],
+#        [4, 2, 8, 7, 1, 6],
+#        [3, 2, 8, 5, 2, 3],
+#        [8, 2, 6, 2, 1, 7],
+#        [1, 2, 4, 3, 3, 3]]
+#
+# row_len = len(arr)
+# col_len = len(arr[0])
+#
+# arr2 = []
+#
+# def maxPool(arr, y, x):
+#     return max(arr[i][j] for i in range(y, y+3) for j in range(x, x+3))
+#
+# def avgPool(arr, y, x):
+#     return sum(arr[i][j] for i in range(y, y+3) for j in range(x, x+3)) / 9.0
+#
+# for i in range(len(arr)-2):
+#     arr3 = []
+#     for j in range(len(arr[0])-2):
+#         arr3.append(avgPool(arr, i, j))
+#     arr2.append(arr3)
+# print(arr2)
 
+# n = 16
+# a = []
+#
+# while n // 2:  # 10 5 3
+#     a.append(n % 2)  # 0 1 0
+#     n //= 2  # 5
+# a.append(n % 2)
+# print(''.join(list(map(str, a[::-1]))))
 
-
+# graph = {'a': {'b', 'c', 'd'},
+#          'b': {'c'},
+#          'c': {'a', 'b'},
+#          'd': {'a'},
+#          'e': {'f', 'g'},
+#          'f': {'g'},
+#          'g': {'e'}
+#          }
+#
+# is_visit = {k: False for k in graph.keys()}
+# connected_component = {}
+#
+#
+# def dfs(cc, n, root):
+#
+#     cc[n] = root
+#     is_visit[n] = True
+#
+#     for nn in graph[n]:
+#         if not is_visit[nn]:
+#             cc[nn] = root
+#             is_visit[nn] = True
+#             dfs(cc, nn, root)
+#
+#
+# for node in graph.keys():
+#     if is_visit[node]:
+#         continue
+#     dfs(connected_component, node, node)
+#
+# print(connected_component)
