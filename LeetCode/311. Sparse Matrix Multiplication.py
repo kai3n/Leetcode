@@ -27,3 +27,27 @@ ans = [[21,11,11],
 
 test = Solution()
 test.multiply(A, B)
+
+# Another Solution
+
+class Solution:
+    def multiply(self, A, B):
+        """
+        :type A: List[List[int]]
+        :type B: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        res = []
+        tmp = 0
+        for i in range(len(A)):
+            k = 0
+            row_res = []
+            for _ in range(len(B[0])):
+                for j in range(len(A[0])):
+                    tmp += A[i][j] * B[j][k]
+                row_res.append(tmp)
+                tmp = 0
+                k += 1
+            res.append(row_res)
+        return res
+
