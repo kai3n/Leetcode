@@ -20,3 +20,8 @@ class Solution:
                     else:
                         m = max(m, j - stack[-1])
         return m
+
+
+a = ")(()())"
+test = Solution()
+print(test.longestValidParentheses(a))
