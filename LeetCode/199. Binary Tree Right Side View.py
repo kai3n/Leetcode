@@ -32,3 +32,19 @@ class Solution(object):
             res.append(node.val)
         return res
 
+
+# Another Solution
+class Solution(object):
+    def rightSideView(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if root==None:
+            return []
+        ans=[root.val]
+        left=ans+self.rightSideView(root.left)
+        right=ans+self.rightSideView(root.right)
+        if len(right)>=len(left):
+            return right
+        return right+left[len(right):]
