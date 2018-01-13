@@ -21,13 +21,41 @@ class Solution(object):
         def is_palindrome(s):
             return s == s[::-1]
 
-        idx = -1
-        for i in range(len(s)):
+        for i in range(len(s)-1, -1, -1):
             if is_palindrome(s[:i+1]):
-                idx = i
-        return s[idx+1:][::-1] + s
+                return s[i + 1:][::-1] + s
+        return s[i + 1:][::-1] + s
 
-s = "ab"
+class Solution(object):
+    def shortestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        if not s:
+            return ''
+
+        l = 0
+        r = len(s) - 1
+        k = r
+
+        while l <= r:
+            if s[l] == s[r]:
+                l += 1
+                r -= 1
+            else:
+                l = 0
+                r = k-1
+                k = r
+        return s[k+1:][::-1] + s
+
+def shortestPalindrome(self, s):
+    r = s[::-1]
+    for i in range(len(s) + 1):
+        if s.startswith(r[i:]):
+            return r[:i] + s
+
+s = "aacecaaa"
 test = Solution()
 print(test.shortestPalindrome(s))
 
