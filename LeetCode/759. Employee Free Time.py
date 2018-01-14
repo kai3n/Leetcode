@@ -55,3 +55,26 @@ s = [[Interval(1,3), Interval(6,7)], [Interval(2,4)], [Interval(2,5), Interval(9
 test = Solution()
 print(test.employeeFreeTime(s))
 
+
+# Java Priority Queue Solution
+"""
+    public List<Interval> employeeFreeTime(List<List<Interval>> avails) {
+
+        List<Interval> result = new ArrayList<>();
+
+        PriorityQueue<Interval> pq = new PriorityQueue<>((a, b) -> a.start - b.start);
+        avails.forEach(e -> pq.addAll(e));
+
+        Interval temp = pq.poll();
+        while(!pq.isEmpty()) {
+            if(temp.end < pq.peek().start) { // no intersect
+                result.add(new Interval(temp.end, pq.peek().start));
+                temp = pq.poll(); // becomes the next temp interval
+            }else { // intersect or sub merged
+                temp = temp.end < pq.peek().end ? pq.peek() : temp;
+                pq.poll();
+            }
+        }
+        return result;
+    }
+"""
