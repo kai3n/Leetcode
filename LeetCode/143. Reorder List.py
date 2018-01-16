@@ -28,7 +28,7 @@ class Solution(object):
 
         walker = head
         runner = head
-        while walker and runner.next and runner.next.next:
+        while runner and runner.next:
             walker = walker.next
             runner = runner.next.next
 
@@ -39,15 +39,12 @@ class Solution(object):
 
         tmp = ListNode(None)
         res = tmp
-        while head and new_head:
-            tmp.next = head
-            head = head.next
-            tmp = tmp.next
-            tmp.next = new_head
-            new_head = new_head.next
-            tmp = tmp.next
         while head:
             tmp.next = head
             head = head.next
             tmp = tmp.next
+            if new_head:
+                tmp.next = new_head
+                new_head = new_head.next
+                tmp = tmp.next
         head = res.next
