@@ -1,4 +1,4 @@
-# Time limit solution
+# Time limit solution O(n*n*k)
 class Solution(object):
     def palindromePairs(self, words):
         """
@@ -15,7 +15,7 @@ class Solution(object):
                     res.append([i, j])
         return res
 
-    # Accepted Solution
+    # Accepted Solution O(n*k*k)
     def palindromePairs(self, words):
         def is_palindrome(check):
             return check == check[::-1]
