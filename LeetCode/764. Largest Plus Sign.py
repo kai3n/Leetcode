@@ -34,7 +34,16 @@ class Solution(object):
 
         for i in range(N):
             for j in range(N):
+                print(grid[i][j], ' ', end='')
+            print()
+        print()
+
+        for i in range(N):
+            for j in range(N):
                 if (res < grid[i][j]):
                     res = grid[i][j]
 
         return res
+
+test = Solution()
+test.orderOfLargestPlusSign(5, [[4,2]])

@@ -46,6 +46,6 @@ class MaxStack(object):
         while n!=self.stk[-1]:
             tmp.append(self.pop())
         ret=self.stk.pop()
-        for i in xrange(len(tmp)-1,-1,-1):
+        for i in range(len(tmp)-1,-1,-1):
             self.push(tmp[i])
         return ret

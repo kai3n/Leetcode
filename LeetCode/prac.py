@@ -1058,3 +1058,14 @@ import re
 #     dfs(connected_component, node, node)
 #
 # print(connected_component)
+
+
+binary_list = [0b01000110, 0b01101100, 0b01100001,
+               0b01100111, 0b00111101, 0b00110001,
+               0b00110010, 0b01000101, 0b01011010]
+
+for e in binary_list:
+    print(chr(e), end='')
+print()
+
+
