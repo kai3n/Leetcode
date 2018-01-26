@@ -1,5 +1,6 @@
 class TicTacToe(object):
     def __init__(self, n):
+        import collections
         self.count = collections.Counter()
         self.n = n
 
