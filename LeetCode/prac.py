@@ -1060,12 +1060,31 @@ import re
 # print(connected_component)
 
 
-binary_list = [0b01000110, 0b01101100, 0b01100001,
-               0b01100111, 0b00111101, 0b00110001,
-               0b00110010, 0b01000101, 0b01011010]
+# import bisect
+# def kEmptySlots(flowers, k):
+#     blooming = []
+#     m = max(flowers)
+#     flowers = [m-i+1 for i in flowers]
+#     flowers = [-1] + flowers[::-1] + [-1]
+#     print(flowers)
+#
+#     for day, flower in enumerate(flowers, 1):
+#         if day == 1:
+#             continue
+#         if day == len(flower)-1:
+#             continue
+#         print(day, flower)
+#         i = bisect.bisect(blooming, flower)
+#         for neighbor in blooming[i-(i>0):i+1]:
+#             if abs(flower - neighbor) - 1 == k:
+#                 return day
+#         blooming.insert(i, flower)
+#     return -1
+#
+#
+# print(kEmptySlots([2,4,3,1,5], 1))
 
-for e in binary_list:
-    print(chr(e), end='')
-print()
+
+
 
 
