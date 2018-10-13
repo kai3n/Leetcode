@@ -13,4 +13,16 @@ class Solution(object):
             i += 1
         return res
 
-'dabcdecabccd'
+
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        d = {}
+        start = 0
+        max_len = 0
+
+        for i in range(len(s)):
+            if d.get(s[i]) is not None and start <= d.get(s[i]):
+                start = d.get(s[i]) + 1
+            d[s[i]] = i
+            max_len = max(max_len, i - start + 1)
+        return max_len
