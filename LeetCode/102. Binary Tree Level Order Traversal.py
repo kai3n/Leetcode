@@ -60,3 +60,36 @@ class Solution(object):
         if not root:
             return []
         return self.helper(root,0)
+
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        res = []
+        if not root:
+            return res
+
+        q = []
+        q.append(root)
+        while q:
+            q_size = len(q)
+            l_by_lvl = []
+            for i in range(q_size):
+                child = q.pop(0)
+                l_by_lvl.append(child.val)
+                if child.left:
+                    q.append(child.left)
+                if child.right:
+                    q.append(child.right)
+            res.append(l_by_lvl)
+        return res
