@@ -16,6 +16,18 @@ class Solution:
         j = k - i
         if A[i] > B[j]:
             # Here I assume it is O(1) to get A[:i] and B[j:]. In python, it's not but in cpp it is.
+            print("A[:i]",A[:i])
+            print("B[j:]", B[j:])
+            print("i",i)
+            print("j", j)
+            print()
             return self.findKth(A[:i], B[j:], i)
         else:
             return self.findKth(A[i:], B[:j], j)
+
+
+a = [1,2,12,13,14]
+b = [3,4,5,6,7,8,9]
+
+s = Solution()
+print(s.findMedianSortedArrays(a, b))

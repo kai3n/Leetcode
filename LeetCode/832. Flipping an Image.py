@@ -6,4 +6,3 @@ class Solution(object):
         """
 
         return [[1 - i for i in row[::-1]] for row in A]
-
