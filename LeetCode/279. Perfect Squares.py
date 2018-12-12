@@ -50,3 +50,19 @@ test = Solution()
 print(test.numSquares(10000))
 print(test.numSquares(1000625))
 
+class Solution(object):
+    def numSquares(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp = [float('inf')] * (n+1)
+        dp[0] = 0
+        for i in range(1, n+1):
+            cur_min = float('inf')
+            j = 1
+            while i - j*j >= 0:
+                cur_min = min(cur_min, dp[i-j*j]+1)
+                j += 1
+            dp[i] = cur_min
+        return dp[n]
