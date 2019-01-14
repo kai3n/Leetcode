@@ -22,3 +22,8 @@ class Solution:
 
         dfs(root)
         return len(set(vals)) == 1
+
+        # def dfs(node):
+        #     return not node or node.val == root.val and dfs(node.left) and dfs(node.right)
+        #
+        # return dfs(root)
