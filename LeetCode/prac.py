@@ -1107,16 +1107,41 @@
 #         pr(dp)
 #         print()
 
-l = [1,2,3]
+def slidingWindowTemplateByHarryChaoyangHe(source, target):
 
-def b(res):
-    res.append(11)
+    from collections import defaultdict
 
-def a(res):
-    res.append(4)
-    print(res)
+    result = []
+    if len(target) > len(source):
+        return result
 
+    d = defaultdict(int)
 
-a(l.copy())
-print(l)
+    for t in target:
+        d[t] += 1
+
+    counter = len(d)
+
+    begin = end = 0
+
+    l = float('inf')
+
+    while end < len(source):
+
+        c = source[end]
+
+        if d.get(c, None) is not None:
+            d[c] -= 1
+            if d.get(c) == 0:
+                counter -= 1
+        end += 1
+        while counter == 0:
+            tempc = source[begin]
+            if d.get(tempc, None) is not None:
+                d[tempc] += 1
+                if d.get(tempc) > 0:
+                    counter += 1
+
+            begin += 1
+
 
