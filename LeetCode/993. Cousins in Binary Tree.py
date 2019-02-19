@@ -28,3 +28,21 @@ class Solution(object):
         if d1 != -1 and d2 != -1 and d1 == d2 and p1 != p2:
             return True
         return False
+
+    def isCousins(self, root, x, y):
+        """
+        :type root: TreeNode
+        :type x: int
+        :type y: int
+        :rtype: bool
+        """
+        d = {}
+
+        def traverse(root, par=None, depth=0):
+            if root and (x not in d or y not in d):
+                d[root.val] = (depth, par)
+                traverse(root.left, root, depth + 1)
+                traverse(root.right, root, depth + 1)
+
+        traverse(root)
+        return d[x][0] == d[y][0] and d[x][1] != d[y][1]
