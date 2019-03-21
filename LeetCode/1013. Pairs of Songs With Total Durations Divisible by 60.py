@@ -1,5 +1,5 @@
 class Solution:
-    def numPairsDivisibleBy60(self, time: List[int]) -> int:
+    def numPairsDivisibleBy60(self, time):
         from collections import defaultdict
 
         d = defaultdict(int)
