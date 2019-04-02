@@ -1,53 +1,29 @@
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution(object):
+class Solution:
+    # @param head, a ListNode
+    # @param m, an integer
+    # @param n, an integer
+    # @return a ListNode
     def reverseBetween(self, head, m, n):
-        """
-        :type head: ListNode
-        :type m: int
-        :type n: int
-        :rtype: ListNode
-        """
+        if m == n:
+            return head
 
-        def reverse_linked_list(head):
-            if not head:
-                return None, None
-            if not head.next:
-                return head, head
-            tail = None
-            last = None
-            cur = head
-            count = 0
-            while cur:
-                count += 1
-                temp = cur.next
-                cur.next = tail
-                tail = cur
-                if count == 1:
-                    last = tail
-                cur = temp
-            return tail, last
+        dummyNode = ListNode(0)
+        dummyNode.next = head
+        pre = dummyNode
 
-        count = 1
-        res = ListNode(None)
-        res.next = head
-        cur = res
-        while cur:
-            if count == m:
-                before = cur
-                mid_beg = cur.next
-            if count == n + 1:
-                after = cur.next
-                mid_end = cur
-                mid_end.next = None
-            cur = cur.next
-            count += 1
-        a, b = reverse_linked_list(mid_beg)
-        before.next = a
-        b.next = after
-        return res.next
+        for i in range(m - 1):
+            pre = pre.next
 
+        # reverse the [m, n] nodes
+        reverse = None
+        cur = pre.next
+        for i in range(n - m + 1):
+            next = cur.next
+            cur.next = reverse
+            reverse = cur
+            cur = next
+
+        pre.next.next = cur
+        pre.next = reverse
+
+        return dummyNode.next
