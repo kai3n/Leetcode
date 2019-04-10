@@ -7,30 +7,14 @@
 
 class Solution(object):
     def flipMatchVoyage(self, root, voyage):
-        """
-        :type root: TreeNode
-        :type voyage: List[int]
-        :rtype: List[int]
-        """
-        self.flipped = []
+        res = []
         self.i = 0
-
-        def dfs(node):
-            if node:
-                if node.val != voyage[self.i]:
-                    self.flipped = [-1]
-                    return
-                self.i += 1
-
-                if (self.i < len(voyage) and node.left and node.left.val != voyage[self.i]):
-                    self.flipped.append(node.val)
-                    dfs(node.right)
-                    dfs(node.left)
-                else:
-                    dfs(node.left)
-                    dfs(node.right)
-
-        dfs(root)
-        if self.flipped and self.flipped[0] == -1:
-            self.flipped = [-1]
-        return self.flipped
+        def dfs(root):
+            if not root: return True
+            if root.val != voyage[self.i]: return False
+            self.i += 1
+            if root.left and root.left.val != voyage[self.i]:
+                res.append(root.val)
+                root.left,root.right = root.right, root.left
+            return dfs(root.left) and dfs(root.right)
+        return res if dfs(root) else [-1]
