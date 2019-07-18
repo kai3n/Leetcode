@@ -1,5 +1,5 @@
 """
-Java version
+// Java version
 class Solution {
     public boolean canTransform(String start, String end) {
         int p1 = 0;
