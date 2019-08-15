@@ -25,3 +25,24 @@ class Solution(object):
         helper(n, [], True)
         return list(self.res)
 
+# different version
+import math
+
+
+class Solution:
+
+    def getFactorsFrom(self, n, frm):
+        res = []
+        for i in range(frm, int(math.floor(math.sqrt(n))) + 1):
+            if n % i == 0:
+                res.append([i, n // i])
+                for partial in self.getFactorsFrom(n // i, i):
+                    res.append([i] + partial)
+        return res
+
+    def getFactors(self, n):
+        """
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        return self.getFactorsFrom(n, 2)
