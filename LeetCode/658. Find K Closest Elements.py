@@ -15,3 +15,8 @@ class Solution(object):
             else:
                 last = mid
         return arr[first:first+k]
+
+
+"""
+    return sorted(sorted(arr, key=lambda val: abs(val - x))[:k])
+"""
