@@ -34,3 +34,18 @@ def perm(self, nums, start):
         for i in range(len(nums) - start):
             s.add(r[:i] + (nums[start],) + r[i:])
     return s
+
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        def dfs(nums, permutation, result):
+            if nums == []:
+                result.append(permutation)
+            selected = set()
+            for i,x in enumerate(nums):
+                if x not in selected:
+                    selected.add(x)
+                    dfs(nums[:i] + nums[i+1:], permutation + [nums[i]], result)
+
+        result = []
+        dfs(nums, [], result)
+        return result
