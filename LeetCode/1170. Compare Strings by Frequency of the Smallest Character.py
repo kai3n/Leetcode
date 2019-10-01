@@ -10,3 +10,6 @@ class Solution(object):
         answer = [sum(q < w for w in words_score) for q in queries_score]
 
         return answer
+
+        # f = sorted(w.count(min(w)) for w in words)
+        # return [len(f) - bisect.bisect(f, q.count(min(q))) for q in queries]
