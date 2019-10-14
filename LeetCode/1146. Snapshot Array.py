@@ -20,7 +20,7 @@ class SnapshotArray(object):
         """
         :rtype: int
         """
-        self.d[self.snap_id] = [x for x in self.arr]
+        self.d[self.snap_id] = self.arr.copy()
         self.snap_id += 1
         return self.snap_id - 1
 
