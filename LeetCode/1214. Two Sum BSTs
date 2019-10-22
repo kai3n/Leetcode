@@ -14,22 +14,26 @@ class Solution(object):
         :rtype: bool
         """
         self.l = []
+        self.l2 = []
         def helper(root):
             if root:
                 helper(root.left)
                 self.l.append(root.val)
                 helper(root.right)
-        def helper2(root, val):
-            while root:
-                if root.val == val:
-                    return True
-                elif root.val < val:
-                    root = root.right
-                else:
-                    root = root.left
-            return False
+        def helper2(root):
+            if root:
+                helper2(root.right)
+                self.l2.append(root.val)
+                helper2(root.left)
         helper(root1)
-        for i in range(len(self.l)):
-            if helper2(root2, target-self.l[i]):
+        helper2(root2)
+        i = j = 0
+        while i < len(self.l) and j < len(self.l2):
+            if self.l[i] + self.l2[j] == target:
                 return True
+            elif self.l[i] + self.l2[j] < target:
+                i += 1
+            else:
+                j += 1
         return False
+        
