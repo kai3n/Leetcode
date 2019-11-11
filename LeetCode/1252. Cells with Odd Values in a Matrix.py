@@ -13,3 +13,12 @@ class Solution(object):
             for j in range(len(arr[0])):
                 arr[y][j] ^= 1
         return sum(val for row in arr for val in row)
+
+
+class Solution(object):
+    def oddCells(self, n, m, indices):
+        row, col = [False] * n, [False] * m
+        for r, c in indices:
+            row[r] ^= True
+            col[c] ^= True
+        return m * sum(row) + n * sum(col) - 2 * sum(row) * sum(col)
