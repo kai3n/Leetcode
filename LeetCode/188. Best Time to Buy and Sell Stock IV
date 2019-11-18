@@ -1,0 +1,22 @@
+class Solution(object):
+    def maxProfit(self, k, prices):
+        def quickSolve(prices):
+            l = len(prices)
+            profit = 0
+            for i in range(1, l):
+                if prices[i] > prices[i-1]:
+                    profit += prices[i] - prices[i-1]
+            return profit
+        if len(prices) < 2 or k < 1:
+            return 0
+        if k >= len(prices) / 2:
+            return quickSolve(prices)
+        l = len(prices)
+        t = [[0 for _ in range(l)] for _ in range(k+1)]
+
+        for i in range(1, k+1):
+            tmpMax = -prices[0]
+            for j in range(1, l):
+                t[i][j] = max(t[i][j-1], prices[j]+tmpMax)
+                tmpMax = max(tmpMax, t[i-1][j-1]-prices[j])
+        return t[k][l-1]
