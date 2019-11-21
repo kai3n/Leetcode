@@ -7,9 +7,8 @@ class Solution:
                 if self.is_similar(a[i], a[j]):
                     ufind.union(i, j)
         return ufind.get_num_groups()
-
-     def is_similar(self, a, b):
-        return len(list(filter(lambda i: a[i] != b[i], range(len(a))))) in (0, 2)
+    def is_similar(self, a, b):
+         return len(list(filter(lambda i: a[i] != b[i], range(len(a))))) in (0, 2)
 
 
 class UnionFind:
