@@ -1,19 +1,13 @@
 class Solution(object):
     def numRollsToTarget(self, d, f, target):
-        """
-        :type d: int
-        :type f: int
-        :type target: int
-        :rtype: int
-        """
         self.memo = {}
-        def helper(d, f, nums, target):
-            if self.memo.get((d, sum(nums))) is not None:
-                return self.memo[(d, sum(nums))]
+        def helper(d, f, target):
+            if self.memo.get((d, target)) is not None:
+                return self.memo[(d, target)]
             if d < 0:
                 return 0
-            if d == 0 and sum(nums) == target:
+            if d == 0 and target == 0:
                 return 1
-            self.memo[(d, sum(nums))] = sum(helper(d-1, f, nums + [n], target) for n in range(1, f+1))
-            return self.memo[(d, sum(nums))]
-        return helper(d, f, [], target) % (10**9 + 7)
+            self.memo[(d, target)] = sum(helper(d - 1, f, target - n) for n in range(1, f+1))
+            return self.memo[(d, target)]
+        return helper(d, f, target) % (10**9 + 7)
