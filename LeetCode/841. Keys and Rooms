@@ -1,0 +1,21 @@
+class Solution(object):
+    def canVisitAllRooms(self, rooms):
+        """
+        :type rooms: List[List[int]]
+        :rtype: bool
+        """
+        from collections import defaultdict
+        
+        d = defaultdict(set)
+        for i in range(len(rooms)):
+            d[i] = set(rooms[i])
+        visited = set()
+        visited.add(0)
+        stack = [0]
+        while stack:
+            node = stack.pop(0)
+            for adj in d[node]:
+                if adj not in visited:
+                    visited.add(adj)
+                    stack.append(adj)
+        return True if len(visited) == len(rooms) else False
