@@ -1,0 +1,4 @@
+class Solution(object):
+    def subtractProductAndSum(self, n):
+        A = map(int, str(n))
+        return reduce(operator.mul, A) - sum(A)
