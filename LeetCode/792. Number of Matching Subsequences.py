@@ -25,3 +25,13 @@ class Solution(object):
             if j == len(idx[c]): return False
             prev = idx[c][j] + 1
         return True
+
+# Brute Force Solution
+class Solution(object):
+    def numMatchingSubseq(self, S, words):
+        def check(s, i):
+            for c in s:
+                i = S.find(c, i) + 1
+                if not i: return False
+            return True
+        return sum((check(word, 0) for word in words))
