@@ -21,6 +21,6 @@ class Solution(object):
                 if b[i] == -b[0]:   # greedy shortcut
                     return 1 + dfs(b[1:i] + b[i+1:])
                 elif b[i] * b[0] < 0:
-                    minTrans = min(minTrans, dfs(b[1:i] + [b[i]+b[0]] + b[i+1:]))
-            return minTrans + 1
+                    minTrans = min(minTrans, dfs(b[1:i] + [b[i]+b[0]] + b[i+1:])+1)
+            return minTrans
         return dfs(balances)
