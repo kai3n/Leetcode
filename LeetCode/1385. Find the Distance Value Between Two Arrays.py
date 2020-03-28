@@ -6,17 +6,17 @@ class Solution(object):
         :type d: int
         :rtype: int
         """
-        res = 0
         arr2.sort()
-        for i in range(len(arr1)):
-            j = bisect.bisect_left(arr2, arr1[i])
-            if j == len(arr2):
-                if abs(arr1[i]-arr2[j-1]) > d:
-                    res += 1
-            elif arr1[i] == arr2[j]:
-                continue
-            elif j == 0 and abs(arr1[i]-arr2[j]) > d:
-                res += 1
-            elif abs(arr1[i]-arr2[j]) > d and j-1 >= 0 and abs(arr1[i]-arr2[j-1]) > d:
-                res += 1
-        return res
+        def is_valid(val):
+            l = 0
+            r = len(arr2)-1
+            while l <= r:
+                mid = (l + r) // 2
+                if abs(arr2[mid] - val) <= d or arr2[mid] == val:
+                    return False
+                elif arr2[mid] > val:
+                    r = mid - 1
+                else:
+                    l = mid + 1
+            return True
+        return sum(is_valid(val) for val in arr1)
