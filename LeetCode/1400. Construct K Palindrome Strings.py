@@ -5,14 +5,10 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
+        if len(s) < k:
+            return False    
         c = Counter(s)
-        pair_count = 0
         unpair_count = 0
         for v in c.values():
-            pair_count += v / 2
             unpair_count += v % 2
-        if unpair_count <= k <= unpair_count + pair_count:
-            return True
-        if pair_count + unpair_count <= k <= pair_count*2 + unpair_count:
-            return True
-        return False
+        return True if unpair_count <= k else False
