@@ -5,17 +5,13 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        left = right = 0
-        while right < len(nums):
-            while left < len(nums) and not nums[left]:
-                left += 1
-            right = left + 1
-            while right < len(nums) and not nums[right]:
-                right += 1
-            if right >= len(nums):
-                break
-            if right - left > k:
-                left = right
-            else:
-                return False
+        prev = -1
+        for i in range(len(nums)):
+            if nums[i]:
+                if prev == -1:
+                    prev = i
+                else:
+                    if i - prev <= k:
+                        return False
+                    prev = i
         return True
