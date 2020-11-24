@@ -13,26 +13,14 @@ class Solution:
                 continue
             topdown = dic[target[i]][0] - cur[0]
             leftright = dic[target[i]][1] - cur[1]
-            if board[cur[0]][cur[1]] == "z":
-                if topdown > 0:
-                    res += "D"*topdown
-                elif topdown < 0:
-                    res += "U"*-topdown
-                if leftright > 0:
-                    res += "R"*leftright
-                elif leftright < 0:
-                    res += "L"*-leftright
-            else:
-                if leftright > 0:
-                    res += "R"*leftright
-                elif leftright < 0:
-                    res += "L"*-leftright
-                if topdown > 0:
-                    res += "D"*topdown
-                elif topdown < 0:
-                    res += "U"*-topdown
+            if leftright < 0:
+                res += "L"*-leftright
+            if topdown < 0:
+                res += "U"*-topdown
+            if topdown > 0:
+                res += "D"*topdown
+            if leftright > 0:
+                res += "R"*leftright
             res += "!"
             cur = (dic[target[i]][0], dic[target[i]][1])
         return res
-                
-            
